@@ -4,6 +4,7 @@ import com.jullierme.api.schoologytest.country.CountryFindService;
 import com.jullierme.api.schoologytest.country.mapper.CountryMapper;
 import com.jullierme.api.schoologytest.country.response.CountryResponse;
 import com.jullierme.api.schoologytest.domain.Country;
+import com.jullierme.api.schoologytest.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -93,7 +94,7 @@ class CountryApiServiceUTest {
         Executable executable = () -> countryApiService.findByName(invalidName);
 
         //then
-        assertThrows(ResponseStatusException.class, executable);
+        assertThrows(NotFoundException.class, executable);
     }
 
     private static Stream<String> invalidParameters() {

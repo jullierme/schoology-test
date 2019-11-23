@@ -3,6 +3,7 @@ package com.jullierme.api.schoologytest.country.controller;
 import com.jullierme.api.schoologytest.country.CountryFindService;
 import com.jullierme.api.schoologytest.country.mapper.CountryMapper;
 import com.jullierme.api.schoologytest.country.response.CountryResponse;
+import com.jullierme.api.schoologytest.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,7 @@ public class CountryApiServiceImpl implements CountryApiService {
     public List<CountryResponse> findByName(String name, Pageable pageable) {
         return countryFindService.findByName(name, pageable)
                 .map(list -> list.stream().map(countryMapper::toResponse)
-                        .filter(Objects::nonNull)
                         .collect(Collectors.toList()))
-                .filter(a -> !a.isEmpty())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource"));
+                .orElseThrow(NotFoundException::new);
     }
 }

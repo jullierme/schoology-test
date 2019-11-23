@@ -20,7 +20,4 @@ public interface CountryFindRepository extends Repository<Country, Long> {
     default Optional<List<Country>> findByName(String name) {
         return findByName(name, null);
     }
-   /* default Optional<List<Country>> findFirst7ByName(@Param("name") String name) {
-        return findByName(name, PageRequest.of(0, 7));
-    }*/
 }
