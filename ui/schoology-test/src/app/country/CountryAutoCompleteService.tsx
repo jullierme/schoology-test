@@ -1,7 +1,6 @@
 import { AutoCompleteServiceImpl } from '../../architecture/components/autocomplete/AutoCompleteService';
-import { Country } from './Country';
 
-export class CountryAutoCompleteService extends AutoCompleteServiceImpl<Country> {
+export class CountryAutoCompleteService extends AutoCompleteServiceImpl {
     api = '/country';
     fieldName = 'name';
     fieldValue = 'abbreviation';

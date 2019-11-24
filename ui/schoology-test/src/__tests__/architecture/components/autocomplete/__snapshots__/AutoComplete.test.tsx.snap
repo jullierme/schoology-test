@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<Async
+  cacheOptions={false}
+  defaultOptions={false}
+  filterOption={null}
+  id="asyncSelect"
+  loadOptions={[Function]}
+  onChange={[Function]}
+/>
+`;
