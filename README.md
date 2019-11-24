@@ -8,6 +8,13 @@
 
     docker-compose up --build   (root folder)
 
+
+    also
+
+    api/schoology-test/docker-compose up --build   (just the backend)
+
+    ui/schoology-test/docker-compose up --build   (just the fronted)
+
 #### How to access?
 
 [http://localhost:8081](http://localhost:8081)
@@ -15,6 +22,14 @@
 #### How to access the API documentation?
 
 [http://localhost:8080/api/doc](http://localhost:8080/api/doc)
+
+
+#### API curl commnad
+
+    curl -X GET "http://localhost:8080/country/find-by-name/brazil?size=7" -H "accept: */*"
+
+######Note: To change the filter, remove the word brazil and use the same space.
+
 
 #### About the Java project:
 
