@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  schoology-web:
+    image: jsb/schoology-test-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
