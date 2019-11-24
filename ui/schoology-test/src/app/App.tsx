@@ -1,49 +1,44 @@
 import React, { useState } from 'react';
 import './App.scss';
 
-import Autocomplete from '../architecture/components/autocomplete';
+import Autocomplete from '../architecture/components/autocomplete/AutoComplete';
 import { Country } from './country/Country';
 import { CountryAutoCompleteService } from './country/CountryAutoCompleteService';
 
 const App: React.FC = () => {
-  const countryACServiceName = new CountryAutoCompleteService();
+    const countryACServiceName = new CountryAutoCompleteService();
 
-  const countryACServiceAbbreviation = new CountryAutoCompleteService();
-  countryACServiceAbbreviation.fieldName = 'abbreviation';
-  countryACServiceAbbreviation.fieldValue = 'name';
+    const countryACServiceAbbreviation = new CountryAutoCompleteService();
+    countryACServiceAbbreviation.fieldName = 'abbreviation';
+    countryACServiceAbbreviation.fieldValue = 'name';
 
-  const [entity, setEntity] = useState(new Country());
+    const [dummy, setDummy] = useState(new Country());
 
-  return (
-    <div className="container">
-      <h2>Schoology test - Autocomplete</h2>
+    return (
+        <div className="container">
+            <h2>Schoology test - Autocomplete</h2>
 
-      
-      <Autocomplete
-        label="Teste AC Name"
-        service={countryACServiceName}
-        value={entity.name}
-        onChange={(e: any) => setEntity({ ...entity, name: e.target.value })}
-      />
+            <label>Name as label and Abbreviation as code</label>
+            <Autocomplete
+                service={countryACServiceName}
+                value={dummy.name}
+                onChange={(e: any) => setDummy({ ...dummy, name: e.value })}
+            />
+            <span>Code: {dummy.name}</span>
 
-      <Autocomplete
-        label="Teste AC Abbreviation"
-        service={countryACServiceAbbreviation}
-        value={entity.abbreviation}
-        onChange={(e: any) => setEntity({ ...entity, abbreviation: e.target.value })}
-      />
+            <br />
 
-      <hr />
-      <br />
-      <label>Name </label>
-      <span>{entity.name}</span>
-      <br />
-
-      <label>Abbreviation </label>
-      <span>{entity.abbreviation}</span>
-      
-    </div>
-  );
+            <label>Abbreviation as label and Name as code</label>
+            <Autocomplete
+                service={countryACServiceAbbreviation}
+                value={dummy.abbreviation}
+                onChange={(e: any) =>
+                    setDummy({ ...dummy, abbreviation: e.value })
+                }
+            />
+            <span>Code: {dummy.abbreviation}</span>
+        </div>
+    );
 };
 
 export default App;

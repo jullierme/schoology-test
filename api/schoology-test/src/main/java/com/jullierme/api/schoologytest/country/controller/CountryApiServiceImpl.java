@@ -5,6 +5,7 @@ import com.jullierme.api.schoologytest.country.mapper.CountryMapper;
 import com.jullierme.api.schoologytest.country.response.CountryResponse;
 import com.jullierme.api.schoologytest.exception.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

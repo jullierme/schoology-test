@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("country")
+@CrossOrigin(origins = "*")
 public class CountryController {
     private CountryApiService countryApiService;
 
