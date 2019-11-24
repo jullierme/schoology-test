@@ -1,0 +1,32 @@
+version: "3"
+services:
+  schoology-api:
+    image: jsb/schoology-test-api
+    build:
+      context: api/schoology-test
+      dockerfile: Dockerfile
+    depends_on:
+      - "mysql"
+    links:
+      - mysql
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/schoology?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=trueuseLegacyDatetimeCode=false&serverTimezone=UTC
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: schoology
+  schoology-web:
+    image: jsb/schoology-test-ui
+    build:
+      context: ui/schoology-test
+      dockerfile: Dockerfile
+    depends_on:
+      - "schoology-api"
+    ports:
+      - "8081:80"
