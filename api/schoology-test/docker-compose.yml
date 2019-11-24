@@ -1,6 +1,6 @@
 version: "3"
 services:
-  api:
+  schoology-api:
     image: jsb/schoology-test-api
     build:
       context: .
